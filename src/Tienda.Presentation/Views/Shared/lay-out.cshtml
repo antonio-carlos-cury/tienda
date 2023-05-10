@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/core.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/padding.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/table.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/grid.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/forms.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/loading.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <main>
+        <header>
+            <aside>
+                <figure onclick="window.location = '@Url.Action("index", "home")'">
+                    <img src="~/img/logo.png" class="img-logo" title="Tienda del manito" />
+                </figure>
+            </aside>
+            <nav>
+                <ul>
+                    <li onclick="toggleMenu()"><a href="#" title="toggle"><i class="fa fa-dedent"></i> </a></li>
+                    <li><a class="nav-item" href="@Url.Action("listar", "pessoas")" title="Lista de pessoas">Pessoas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="main-section">
+            @RenderBody()
+        </section>
+        <footer>
+            @RenderSection("footer", required: false)
+        </footer>
+        <input type="hidden" id="base-path" value="@Url.Content("~/")" />
+    </main>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/fa.js"></script>
+    <script src="~/js/core.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
+    <script type="text/html" id="full-screen-view-mode">
+        <div id="full-screen-modal">
+            <div class="image-container mg-2">
+                <img src="%%SRC%%" class="img-full" id="img-full" data-name="%%NAME%%" />
+                <video src="#" onloadedmetadata="canPlay('%%SECONDS%%')" id="current-video" data-fp="%%FP%%" class="hidden img-full" controls muted autoplay></video>
+            </div>
+            <div class="row folder-list pd-0">
+                <div class="folder-item col-3 col-mobile-3" title="Image zoom" onclick="zoomIt()">
+                    <i class="fa fa-plus-square-o"></i>
+                </div>
+                <div class="folder-item col-3 col-mobile-3" title="Salvar Imagem" onclick="saveImg($('#img-full')[0])">
+                    <i class="fa fa-download"></i>
+                </div>
+                <div class="folder-item col-3 col-mobile-3" title="Play video" onclick="playVideo()">
+                    <i class="fa fa-youtube-play"></i>
+                </div>
+                <div class="folder-item col-3 col-mobile-3" title="Fechar" onclick="exitFull()">
+                    <i class="fa fa-sign-out"></i>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="pagination-full">
+        <ul class="full-pagination"></ul>
+    </script>
+    <script type="text/html" id="download-frame">
+        <iframe src="%%SRC%%" id="download-frm" frameborder="0" class="hidden"></iframe>
+    </script>
+
+    <script type="text/html" id="loading-ui">
+        <div class="row loading-ui">
+            <div class="col-12 center-flex">
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+    </script>
+    @RenderSection("script", required: false)
+</body>
+</html>

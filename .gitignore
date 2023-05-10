@@ -1,0 +1,17 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/tienda
+/src/Tienda.BaseService/obj
+/src/Tienda.BaseService/bin
+/src/Tienda.Domain/obj
+/src/Tienda.Domain/bin
+/src/Tienda.Presentation/Properties
+/src/Tienda.Presentation/obj
+/src/Tienda.Service.Person/obj
+/src/Tienda.Service.Person/bin
+/src/Tienda.WebApi/obj
+/src/Tienda.WebApi/bin
+/src/Tienda.WebApi/.config
+/src/Tienda.WebApi/Properties

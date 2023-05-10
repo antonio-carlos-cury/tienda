@@ -1,0 +1,39 @@
+﻿@model Tienda.Presentation.Models.Core.ErrorResponseModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/core.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/grid.css" rel="stylesheet" asp-append-version="true" />
+    <title>Ops...</title>
+</head>
+<body onload="getError()">
+    <section class="error-section">
+        <img src="~/img/logo-lg.png" />
+        <h5 class="mgb-26">Falha ao processar requisição</h5>
+        <input type="hidden" id="error" value="@Model.ToJson()" />
+        <div class="row">
+            <div class="col-12">
+                <pre class="code-view">
+                <code id="code" class="break-pre-line"></code>
+                </pre>
+            </div>
+        </div>
+
+    </section>
+
+    <script type="text/javascript">
+
+        function getError() {
+            var text = document.getElementById('error').value;
+            var result = JSON.parse(text);
+            document.getElementById('code').innerText = JSON.stringify(result, null, 4);
+        }
+
+    </script>
+</body>
+</html>

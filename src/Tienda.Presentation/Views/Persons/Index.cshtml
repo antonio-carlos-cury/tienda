@@ -1,0 +1,39 @@
+﻿@model DefaultApiResponse<PersonFilters, List<PersonViewModel>>
+<div class="folder-list">
+    <div class="folder-item pdb-10 pdt-10" onclick="toggleRow('results')">
+        <div class="row">
+            <div class="col-12 alg-center">
+                <i class="fa fa-user pdt-4"></i>
+                <div class="pdl-8 lh-10">
+                    <h5 class="sm-text">Gestão de pessoas</h5>
+                    <span class="sm-text">De <strong>@Model.Filter.CurrentPageFirstRegisterNumber</strong> até <strong>@Model.Filter.CurrentPageLastRegisterNumber</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row hidden" data-key="results">
+    <div class="row">
+        <div class="col-12"><a href="@Url.Action("inserir", "pessoas")"><input type="button" value="Novo registro" /></a></div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Nascimento</th>
+                <th>País de origem</th>
+            </tr>
+        </thead>
+        <tbody class="body-files">
+            @foreach (PersonViewModel person in Model.Results)
+            {
+                <tr>
+                    <td><a href="@Url.Action("editar", "pessoas", new { @id = person.Id})">@person.Name</a></td>
+                    <td>@person.BirthDate.ToLocalTime()</td>
+                    <td>@person.BirthCountry.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
